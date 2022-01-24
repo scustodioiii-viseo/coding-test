@@ -6,37 +6,51 @@ import R from 'res/R';
 import styles from './styles';
 
 type Props = DefaultProps & {
-  onPressLogin?: () => void;
-  onPressClose?: () => void;
+  onPressLogin: (username: string, password: string) => void;
+  onPressClose: () => void;
 };
 
 interface DefaultProps {
   visible: boolean;
 }
 
-class ModalLogin extends React.Component<Props> {
+interface State {
+  username: string;
+  password: string;
+}
+
+class ModalLogin extends React.Component<Props, State> {
   public static defaultProps: DefaultProps = {
     visible: true,
   };
 
-  private onChangeTextUsername = (username: string): void => {
-    if (!username) {
-    }
+  public constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      username: R.strings.empty,
+      password: R.strings.empty,
+    };
+  }
+
+  private onChangeTextUsername = (username: string): void =>
     this.setState({
       username,
     });
-  };
 
-  private onChangeTextPassword = (password: string): void => {
-    if (!password) {
-    }
+  private onChangeTextPassword = (password: string): void =>
     this.setState({
       password,
     });
+
+  private onPressLogin = (): void => {
+    const {username, password} = this.state;
+    const {onPressLogin} = this.props;
+    onPressLogin(username, password);
   };
 
   public render(): React.ReactNode {
-    const {visible, onPressClose, onPressLogin} = this.props;
+    const {visible, onPressClose} = this.props;
     return (
       <Modal
         visible={visible}
@@ -68,7 +82,7 @@ class ModalLogin extends React.Component<Props> {
             <ButtonRounded
               style={styles.login}
               title={R.strings.login.buttonTitle()}
-              onPress={onPressLogin}
+              onPress={this.onPressLogin}
             />
           </View>
         </View>
