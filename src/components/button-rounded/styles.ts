@@ -2,17 +2,15 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 12,
+    height: 42,
+    padding: 8,
   },
-  logo: {
-    alignSelf: 'center',
-    width: '90%',
-  },
-  login: {
-    marginTop: 20,
-    alignSelf: 'center',
-    width: '50%',
+  title: {
+    fontSize: 16,
   },
 });
 
