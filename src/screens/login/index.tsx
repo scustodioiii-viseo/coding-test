@@ -5,6 +5,7 @@ import React from 'react';
 import {Image, View} from 'react-native';
 import R from 'res/R';
 import styles from './styles';
+import UserContext from 'app/context/user';
 
 type Props = {};
 interface State {
@@ -12,6 +13,8 @@ interface State {
 }
 
 class LoginScreen extends React.Component<Props, State> {
+  static contextType = UserContext;
+
   public constructor(props: Props) {
     super(props);
     this.state = {
@@ -37,6 +40,7 @@ class LoginScreen extends React.Component<Props, State> {
         <ModalLogin
           visible={isModalVisible}
           onPressClose={this.toggleModalVisibility}
+          onPressLogin={() => this.context.setIsLoggedIn(true)}
         />
       </ScreenBase>
     );

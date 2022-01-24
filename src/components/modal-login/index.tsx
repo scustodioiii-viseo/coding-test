@@ -36,7 +36,7 @@ class ModalLogin extends React.Component<Props> {
   };
 
   public render(): React.ReactNode {
-    const {visible, onPressClose} = this.props;
+    const {visible, onPressClose, onPressLogin} = this.props;
     return (
       <Modal
         visible={visible}
@@ -68,6 +68,7 @@ class ModalLogin extends React.Component<Props> {
             <ButtonRounded
               style={styles.login}
               title={R.strings.login.buttonTitle()}
+              onPress={onPressLogin}
             />
           </View>
         </View>
