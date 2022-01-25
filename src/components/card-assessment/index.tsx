@@ -20,10 +20,12 @@ class CardAssessment extends React.Component<Props> {
         />
         <View style={styles.infoContainer}>
           <Text style={styles.infoTitle}>{assessment.title}</Text>
-          <Text
-            style={
-              styles.infoPoints
-            }>{`Earn up to ${assessment.points} points`}</Text>
+          {assessment.points > 0 && (
+            <Text
+              style={
+                styles.infoPoints
+              }>{`Earn up to ${assessment.points} points`}</Text>
+          )}
         </View>
         <Image style={styles.arrow} source={R.images.iconArrowRight} />
       </View>

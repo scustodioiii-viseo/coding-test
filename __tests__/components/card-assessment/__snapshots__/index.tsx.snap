@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <CardAssessment /> correctly if has no points value 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "borderRadius": 12,
+      "flexDirection": "row",
+      "height": 150,
+      "margin": 14,
+      "padding": 20,
+    }
+  }
+>
+  <Image
+    resizeMode="cover"
+    source={
+      Object {
+        "testUri": "../../../src/res/raw/assessment.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 100,
+        "width": 75,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "marginHorizontal": 12,
+        "maxWidth": 150,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "flex": 1,
+          "fontSize": 16,
+          "fontWeight": "600",
+        }
+      }
+    >
+      Advance Health Screening
+    </Text>
+  </View>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/res/images/icon_arrow_right.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "height": 24,
+        "width": 24,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`should render <CardAssessment /> correctly if has points value 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "borderRadius": 12,
+      "flexDirection": "row",
+      "height": 150,
+      "margin": 14,
+      "padding": 20,
+    }
+  }
+>
+  <Image
+    resizeMode="cover"
+    source={
+      Object {
+        "testUri": "../../../src/res/raw/assessment.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 100,
+        "width": 75,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "marginHorizontal": 12,
+        "maxWidth": 150,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "flex": 1,
+          "fontSize": 16,
+          "fontWeight": "600",
+        }
+      }
+    >
+      Advance Health Screening
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
+        }
+      }
+    >
+      Earn up to 99999 points
+    </Text>
+  </View>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/res/images/icon_arrow_right.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "flex-end",
+        "height": 24,
+        "width": 24,
+      }
+    }
+  />
+</View>
+`;

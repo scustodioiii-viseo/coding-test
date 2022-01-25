@@ -17,7 +17,7 @@ const getAssessments = (
     },
     {
       title: 'Advance Health Screening',
-      points: 700,
+      points: 0,
       icon: R.raw.assessment,
     },
     {
