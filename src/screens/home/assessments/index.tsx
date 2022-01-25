@@ -1,9 +1,10 @@
 import Assessment from 'models/Assessment';
 import React from 'react';
-import {FlatList, Image, ListRenderItemInfo, Text, View} from 'react-native';
+import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import R from 'res/R';
 import styles from './styles';
 import assessmentActions from 'actions/assessments';
+import CardAssessment from 'components/card-assessment';
 
 type Props = {};
 
@@ -30,19 +31,7 @@ class Assessments extends React.Component<Props, State> {
     info: ListRenderItemInfo<Assessment>,
   ): React.ReactElement => {
     const {item} = info;
-    return (
-      <View style={styles.card}>
-        <Image style={styles.icon} source={item.icon} resizeMode="cover" />
-        <View style={styles.infoContainer}>
-          <Text style={styles.infoTitle}>{item.title}</Text>
-          <Text
-            style={
-              styles.infoPoints
-            }>{`Earn up to ${item.points} points`}</Text>
-        </View>
-        <Image style={styles.arrow} source={R.images.iconArrowRight} />
-      </View>
-    );
+    return <CardAssessment assessment={item} />;
   };
 
   public render(): React.ReactNode {

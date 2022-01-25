@@ -1,9 +1,10 @@
 import Challenge from 'models/Challenge';
 import React from 'react';
-import {FlatList, Image, ListRenderItemInfo, Text, View} from 'react-native';
+import {FlatList, ListRenderItemInfo, Text, View} from 'react-native';
 import R from 'res/R';
 import styles from './styles';
 import challengesActions from 'actions/challenges';
+import CardChallenge from 'components/card-challenge';
 
 type Props = {};
 
@@ -28,27 +29,7 @@ class Challenges extends React.Component<Props, State> {
     info: ListRenderItemInfo<Challenge>,
   ): React.ReactElement => {
     const {item} = info;
-    return (
-      <View style={styles.card}>
-        <Image style={styles.icon} source={item.icon} resizeMode="cover" />
-        <View style={styles.infoContainer}>
-          <Text style={styles.infoTitle}>{item.title}</Text>
-          {item.timeRemainingInDays && (
-            <Text
-              style={
-                styles.infoTimeRemaining
-              }>{`${item.timeRemainingInDays} days left`}</Text>
-          )}
-        </View>
-        <View style={styles.infoPointsContainer}>
-          <Text
-            style={
-              styles.infoPoints
-            }>{`Earn up to ${item.points} points`}</Text>
-          <Image style={styles.arrow} source={R.images.iconArrowRight} />
-        </View>
-      </View>
-    );
+    return <CardChallenge challenge={item} />;
   };
 
   public render(): React.ReactNode {
