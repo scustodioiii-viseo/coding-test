@@ -1,13 +1,12 @@
+import {Action} from 'actions/user';
+import User from 'models/User';
 import React from 'react';
 
-export interface State {
-  isLoggedIn: boolean;
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
-}
+export type State = User & Action;
 
 const defaultState: State = {
   isLoggedIn: false,
-  setIsLoggedIn: () => {},
+  login: () => {},
 };
 
 export default React.createContext<State>(defaultState);
