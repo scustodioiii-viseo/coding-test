@@ -1,13 +1,16 @@
 import ScreenBase from 'components/screen-base';
 import React from 'react';
-import {View} from 'react-native';
+import {ScrollView} from 'react-native';
+import Assessments from './assessments';
 import styles from './styles';
 
 class HomeScreen extends React.Component {
   public render(): React.ReactNode {
     return (
       <ScreenBase>
-        <View style={styles.container} />
+        <ScrollView style={styles.container}>
+          <Assessments />
+        </ScrollView>
       </ScreenBase>
     );
   }

@@ -33,6 +33,12 @@ const strings = {
     title: (): string => 'Logout',
     message: (): string => 'Are you sure you want to log out?',
   },
+  assessments: {
+    title: (): string => 'Assessments',
+  },
+  challenges: {
+    title: (): string => 'Challenges',
+  },
 };
 
 export default strings;
