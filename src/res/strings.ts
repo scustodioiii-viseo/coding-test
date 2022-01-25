@@ -4,6 +4,7 @@ const strings = {
   common: {
     close: (): string => 'Close',
     ok: (): string => 'Ok',
+    cancel: (): string => 'Cancel',
   },
   login: {
     buttonTitle: (): string => 'LOGIN',
@@ -23,6 +24,14 @@ const strings = {
       notRegistered: (): string =>
         'Sorry. The username you entered is currently not registered.',
     },
+  },
+  screens: {
+    login: 'Login',
+    home: 'Home',
+  },
+  logout: {
+    title: (): string => 'Logout',
+    message: (): string => 'Are you sure you want to log out?',
   },
 };
 

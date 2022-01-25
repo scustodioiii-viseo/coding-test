@@ -3,6 +3,7 @@ import React from 'react';
 import LoginScreen from 'screens/login';
 import HomeScreen from 'screens/home';
 import {ParamListBase} from '@react-navigation/native';
+import ButtonLogout from 'components/button-logout';
 
 export interface RootStackParamList extends ParamListBase {
   Login: undefined;
@@ -16,7 +17,13 @@ class MainStack extends React.Component {
     return (
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerRight: () => <ButtonLogout />,
+          }}
+        />
       </Stack.Navigator>
     );
   }

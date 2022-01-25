@@ -58,6 +58,31 @@ const showErrorMessage = (
 ): void =>
   showOk(message, onPressOk, false, onDismiss, R.strings.error.title());
 
+const showOkCancel = (
+  message?: string,
+  onPressOk?: () => void,
+  cancelable = true, // android only
+  onDismiss?: () => void, // android only,
+  title = R.strings.appName(),
+  okButtonText = R.strings.common.ok(),
+  style: 'default' | 'cancel' | 'destructive' = 'default',
+  onPressCancel?: () => void,
+): void => {
+  const okButton: AlertButton = {
+    text: okButtonText,
+    onPress: onPressOk,
+    style,
+  };
+  const cancelButton: AlertButton = {
+    text: R.strings.common.cancel(),
+    style: 'cancel',
+    onPress: onPressCancel,
+  };
+  const buttons = [okButton, cancelButton];
+  show(message, buttons, cancelable, onDismiss, title);
+};
+
 export default {
   showErrorMessage,
+  showOkCancel,
 };

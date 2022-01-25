@@ -1,9 +1,6 @@
-import User from 'models/User';
 import React from 'react';
-import storage from 'util/storage';
 import UserContext, {State as UserState} from './user';
 import userActions from 'actions/user';
-import alert from 'util/alert';
 
 type Props = {};
 
@@ -14,14 +11,14 @@ class Container extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      ...userActions,
       isLoggedIn: false,
       login: this.login,
     };
   }
 
   public componentDidMount(): void {
-    storage.getObjectFor<User>(storage.keys.user).then(user => {
-      const isLoggedIn = user !== null ? user?.isLoggedIn : false;
+    userActions.getUserLoggedInState(isLoggedIn => {
       this.setState({isLoggedIn});
     });
   }
@@ -29,17 +26,10 @@ class Container extends React.Component<Props, State> {
   private login = (
     username: string,
     password: string,
-    callback: (error?: string) => void,
+    callback: () => void,
   ): void =>
-    userActions.login(username, password, (error?: string): void => {
-      if (error) {
-        alert.showErrorMessage(error);
-      } else {
-        callback();
-        const userState = {isLoggedIn: true};
-        this.setState(userState);
-        storage.saveObject<User>(storage.keys.user, userState);
-      }
+    userActions.login(username, password, (): void => {
+      this.setState({isLoggedIn: true}, callback);
     });
 
   public render(): React.ReactNode {

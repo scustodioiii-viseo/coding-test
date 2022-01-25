@@ -20,7 +20,6 @@ interface Props {
 
 interface State {
   isModalVisible: boolean;
-  isLoginVisible: boolean;
 }
 
 class LoginScreen extends React.Component<Props, State> {
@@ -30,15 +29,12 @@ class LoginScreen extends React.Component<Props, State> {
     super(props);
     this.state = {
       isModalVisible: false,
-      isLoginVisible: false,
     };
   }
 
   public UNSAFE_componentWillReceiveProps = (_: Props, context: any): void => {
     if (context.isLoggedIn) {
       this.navigateToHome();
-    } else if (!this.context.isLoggedIn) {
-      this.setState({isLoginVisible: true});
     }
   };
 
@@ -53,23 +49,24 @@ class LoginScreen extends React.Component<Props, State> {
     });
 
   private navigateToHome = (): void => {
-    const {navigation} = this.props;
-    navigation.dispatch(StackActions.replace('Home'));
+    // delay screen transition to fix ios modal showing again in home screen
+    setTimeout(() => {
+      const {navigation} = this.props;
+      navigation.dispatch(StackActions.replace(R.strings.screens.home));
+    }, 500);
   };
 
   public render(): React.ReactNode {
-    const {isModalVisible, isLoginVisible} = this.state;
+    const {isModalVisible} = this.state;
     return (
       <ScreenBase>
         <View style={styles.container}>
           <Image style={styles.logo} source={R.raw.logo} resizeMode="contain" />
-          {isLoginVisible && (
-            <ButtonRounded
-              style={styles.login}
-              title={R.strings.login.buttonTitle()}
-              onPress={this.toggleModalVisibility}
-            />
-          )}
+          <ButtonRounded
+            style={styles.login}
+            title={R.strings.login.buttonTitle()}
+            onPress={this.toggleModalVisibility}
+          />
         </View>
         <ModalLogin
           visible={isModalVisible}
